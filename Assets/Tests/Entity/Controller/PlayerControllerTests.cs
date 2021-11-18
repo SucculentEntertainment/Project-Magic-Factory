@@ -5,33 +5,12 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.InputSystem;
 
-namespace Tests
+namespace Tests.Entity.Controller
 {
-    public class EntitySystemTests : InputTestFixture
+    public class PlayerControllerTests : InputTestFixture
     {
-        [Test]
-        public void TestEntityControllerLink()
-        {
-            GameObject go = new();
-            BaseEntity entity = go.AddComponent(typeof(BaseEntity)) as BaseEntity;
-            BaseController controller = go.AddComponent(typeof(BaseController)) as BaseController;
-
-            entity.controller = controller;
-            entity.init();
-            Assert.That(controller.parent, Is.EqualTo(entity));
-
-            controller.parent.setData(new Vector2(1, 2), new Vector2(3, 4), "test", "returnTest");
-
-            Assert.That(entity.movDir, Is.EqualTo(new Vector2(1, 2)));
-            Assert.That(entity.aimDir, Is.EqualTo(new Vector2(3, 4)));
-            Assert.That(entity.state, Is.EqualTo("test"));
-            Assert.That(entity.returnState, Is.EqualTo("returnTest"));
-
-            Object.Destroy(go);
-        }
-
         [UnityTest]
-        public IEnumerator TestPlayerControllerInput()
+        public IEnumerator TestInput()
         {
             Mouse mouse = InputSystem.AddDevice<Mouse>();
             Keyboard keyboard = InputSystem.AddDevice<Keyboard>();
