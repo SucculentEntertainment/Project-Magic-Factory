@@ -2,13 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BaseEntity : MonoBehaviour
 {
-    [HideInInspector] public string state = "idle";
-    [HideInInspector] public string returnState = "";
-    [HideInInspector] public Vector2 aimDir = new Vector2(0, 0);
-    [HideInInspector] public Vector2 movDir = new Vector2(0, 0);
-    
     [Header("Properties")]
     public string typeID;
     public BaseController controller;
@@ -16,6 +12,12 @@ public class BaseEntity : MonoBehaviour
 
     [Header("Generated")]
     public string typeName;
+
+    [Header("Debug")]
+    public string state = "idle";
+    public string returnState = "";
+    public Vector2 aimDir = new Vector2(0, 0);
+    public Vector2 movDir = new Vector2(0, 0);
 
 
 

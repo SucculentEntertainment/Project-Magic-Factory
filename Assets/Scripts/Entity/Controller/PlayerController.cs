@@ -5,18 +5,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
 {
-    [Header("References")]
-    public Camera mainCamera;
-
     private Vector2 movDir = new Vector2(0, 0);
     private Vector2 aimDir = new Vector2(0, 0);
+
+    [Header("References")]
+    public Camera mainCamera;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void Update()
+    {
+        // Only change to idle state when no longer moving
+        if(parent.state == "move" && rb.velocity == Vector2.zero) parent.setData(movDir, aimDir, "idle");
+    }
 
     private void OnMove(InputValue dirVal)
     {
         movDir = dirVal.Get<Vector2>();
-
-        if(movDir.magnitude > 0) parent.setData(movDir, aimDir, "move");
-        else parent.setData(movDir, aimDir, "idle");
+        parent.setData(movDir, aimDir, "move");
     }
 
     private void OnLook(InputValue posVal)
