@@ -361,8 +361,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1538911892}
   - component: {fileID: 1538911893}
-  - component: {fileID: 1538911894}
+  - component: {fileID: 1538911896}
+  - component: {fileID: 1538911895}
   - component: {fileID: 1538911891}
+  - component: {fileID: 1538911894}
+  - component: {fileID: 1538911897}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -382,10 +385,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464bbd6c7e42fcf4a896ca19cd8735ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: idle
+  returnState: 
+  aimDir: {x: 0, y: 0}
+  movDir: {x: 0, y: 0}
   typeID: player
   controller: {fileID: 1538911894}
-  behaviours: []
-  instanceID: 
+  behaviours:
+  - {fileID: 1538911897}
   typeName: 
 --- !u!4 &1538911892
 Transform:
@@ -444,4 +451,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b6a87287a3a3045adecb128dcb89cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
   mainCamera: {fileID: 519420031}
+--- !u!23 &1538911895
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538911890}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1538911896
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538911890}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1538911897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538911890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abbb47c9bc2c5b8449b3b216a8b9fde7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetState: move
+  isOneshot: 0
+  speed: 0.1

@@ -28,7 +28,7 @@ public class BaseEntity : MonoBehaviour
     {
         foreach(BaseBehaviour b in behaviours)
         {
-            if(b.targetState == state) b.exec(movDir, aimDir, returnState);
+            if(b.targetState == state) b.exec(movDir, aimDir, returnState, Time.deltaTime);
         }
     }
 
